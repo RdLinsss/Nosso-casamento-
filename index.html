@@ -10,20 +10,20 @@
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* CAPA INICIAL */
-        #capa { height: 100vh; background-color: var(--verde); display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 0.8s ease-in-out; }
-        .iniciais-capa { font-size: 80px; color: var(--branco); margin-bottom: 30px; }
-        .btn-abrir { background: none; border: 2px solid var(--branco); color: var(--branco); padding: 15px 40px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; }
+        /* Capa de Entrada */
+        #capa { height: 100vh; background-color: var(--verde); display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 1s ease-in-out; }
+        .iniciais-capa { font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; }
+        .btn-abrir { background: none; border: 1px solid var(--branco); color: var(--branco); padding: 15px 45px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; letter-spacing: 2px; transition: 0.3s; }
+        .btn-abrir:hover { background: var(--branco); color: var(--verde); }
 
-        /* TAG DA MÚSICA */
+        /* Player de Música Flutuante */
         #player-musica { position: fixed; top: 20px; right: 20px; z-index: 150; display: none; }
-        .tag-musica { background: var(--verde); color: var(--branco); padding: 8px 15px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 1px solid var(--branco); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .tag-musica { background: rgba(85, 107, 47, 0.9); color: var(--branco); padding: 10px 20px; border-radius: 30px; font-size: 12px; cursor: pointer; border: 1px solid var(--branco); backdrop-filter: blur(5px); }
 
-        /* CONTEÚDO PRINCIPAL */
+        /* Container Principal com a Sua Foto */
         .container { 
-            padding: 20px; 
+            padding: 40px 20px; 
             text-align: center; 
-            /* AJUSTE PARA O NOME DA FOTO DO IPHONE */
             background-image: linear-gradient(rgba(253, 252, 245, 0.7), rgba(253, 252, 245, 0.7)), url('foto.jpg.heic'); 
             background-attachment: fixed; 
             background-size: cover; 
@@ -31,25 +31,37 @@
             min-height: 100vh; 
             display: none; 
         }
-        .secao { background: rgba(253, 252, 245, 0.95); margin: 20px auto; padding: 30px; border-radius: 15px; max-width: 450px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid rgba(85, 107, 47, 0.1); }
-        
-        .grid-detalhes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .box-detalhe { border: 1px solid var(--verde); padding: 15px; border-radius: 8px; }
-        
-        .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .card-presente { background: var(--verde); color: var(--branco); padding: 15px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: 0.3s; }
 
-        .input-nome { width: 90%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
-        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 15px; border-radius: 5px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; }
+        .secao { 
+            background: rgba(255, 255, 255, 0.9); 
+            margin: 30px auto; 
+            padding: 40px 20px; 
+            border-radius: 20px; 
+            max-width: 500px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border: 1px solid rgba(85, 107, 47, 0.1); 
+        }
+
+        .nomes { font-size: 35px; margin-bottom: 10px; color: var(--verde); }
+        .data { font-size: 18px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+
+        .grid-detalhes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .box-detalhe { border: 1px solid rgba(85, 107, 47, 0.3); padding: 20px; border-radius: 15px; }
+        .box-detalhe h3 { font-size: 20px; margin-bottom: 10px; }
+        
+        .input-nome { width: 85%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd; outline: none; }
+        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 90%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; transition: 0.3s; }
+        
+        .cota-pix { background: var(--verde); color: var(--branco); padding: 15px; border-radius: 12px; margin: 10px; cursor: pointer; font-size: 14px; display: inline-block; width: 130px; }
     </style>
 </head>
 <body>
 
-    <audio id="musica" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+    <audio id="musica" src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptoken=42QG9tIHRsQ" loop></audio>
 
     <div id="capa">
         <div class="iniciais-capa">R & D</div>
-        <button class="btn-abrir" onclick="abrir()">Abra aqui</button>
+        <button class="btn-abrir" onclick="abrir()">ABRIR CONVITE</button>
     </div>
 
     <div id="player-musica">
@@ -58,9 +70,9 @@
 
     <div id="conteudo" class="container">
         <div class="secao">
-            <h2 style="font-style: italic;">Sejam bem-vindos!</h2>
-            <p>Ricardo & Daniela</p>
-            <p><strong>12 de Dezembro de 2026</strong></p>
+            <p style="text-transform: uppercase; letter-spacing: 2px;">Convidamos para o nosso casamento</p>
+            <h1 class="nomes">Ricardo & Daniela</h1>
+            <p class="data">12 . 12 . 2026</p>
         </div>
 
         <div class="secao">
@@ -77,44 +89,45 @@
         </div>
 
         <div class="secao">
-            <h3>Confirme sua Presença</h3>
-            <input type="text" id="nome" class="input-nome" placeholder="Seu nome completo">
-            <button class="btn-acao" onclick="confirmar()">Confirmar Presença</button>
+            <h3>Confirmação de Presença</h3>
+            <p>Sua presença é muito importante para nós.</p>
+            <input type="text" id="nome" class="input-nome" placeholder="Digite seu nome completo">
+            <button class="btn-acao" onclick="confirmar()">CONFIRMAR PRESENÇA</button>
         </div>
 
         <div class="secao">
-            <h3>Lista de Presentes</h3>
-            <div class="grid-presentes">
-                <div class="card-presente" onclick="copiarPix()">Cota 01<br>R$ 100,00</div>
-                <div class="card-presente" onclick="copiarPix()">Cota 02<br>R$ 200,00</div>
-                <div class="card-presente" onclick="copiarPix()">Cota 03<br>R$ 500,00</div>
-                <div class="card-presente" onclick="copiarPix()">Cota Livre</div>
+            <h3>Presentes e Afeto</h3>
+            <p>Caso deseje nos presentear, escolha uma cota abaixo:</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <div class="cota-pix" onclick="copiar()">Cota R$ 100</div>
+                <div class="cota-pix" onclick="copiar()">Cota R$ 200</div>
+                <div class="cota-pix" onclick="copiar()">Cota Livre</div>
             </div>
-            <p id="msgPix" style="font-size: 13px; margin-top: 15px; color: #556B2F; font-weight: bold;"></p>
+            <p id="feedback" style="margin-top: 15px; font-weight: bold;"></p>
         </div>
     </div>
 
     <script>
-        const m = document.getElementById('musica');
+        const som = document.getElementById('musica');
         function abrir() {
             document.getElementById('capa').style.transform = 'translateY(-100%)';
             document.getElementById('conteudo').style.display = 'block';
             document.getElementById('player-musica').style.display = 'block';
-            m.play().catch(() => console.log("Play manual necessário"));
+            som.play().catch(() => console.log("Interação necessária"));
         }
         function controlar() {
-            if (m.paused) { m.play(); document.getElementById('txtM').innerText = "⏸ Pausar música"; }
-            else { m.pause(); document.getElementById('txtM').innerText = "🎵 Nossa música"; }
+            if (som.paused) { som.play(); document.getElementById('txtM').innerText = "⏸ Pausar"; }
+            else { som.pause(); document.getElementById('txtM').innerText = "🎵 Tocar"; }
         }
-        function copiarPix() {
-            const chave = "21981906377";
-            navigator.clipboard.writeText(chave);
-            document.getElementById('msgPix').innerText = "Chave Pix (Celular) copiada!";
+        function copiar() {
+            navigator.clipboard.writeText("21981906377");
+            document.getElementById('feedback').innerText = "Chave Pix (Celular) copiada com sucesso!";
             alert("Chave Pix copiada: 21 98190-6377");
         }
         function confirmar() {
             const n = document.getElementById('nome').value;
-            if(n) alert("Obrigado, " + n + "! Presença confirmada.");
+            if(n) alert("Obrigado, " + n + "! Sua presença foi confirmada.");
+            else alert("Por favor, digite seu nome.");
         }
     </script>
 </body>
