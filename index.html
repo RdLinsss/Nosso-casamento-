@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo & Daniela | 12.12.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; }
+        body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* CAPA INICIAL */
+        #capa { height: 100vh; background-color: var(--verde); display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 0.8s ease-in-out; }
+        .iniciais-capa { font-size: 80px; color: var(--branco); margin-bottom: 30px; }
+        .btn-abrir { background: none; border: 2px solid var(--branco); color: var(--branco); padding: 15px 40px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; }
+
+        /* TAG DA MÚSICA */
+        #player-musica { position: fixed; top: 20px; right: 20px; z-index: 150; display: none; }
+        .tag-musica { background: var(--verde); color: var(--branco); padding: 8px 15px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 1px solid var(--branco); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+        /* CONTEÚDO PRINCIPAL */
+        .container { 
+            padding: 20px; 
+            text-align: center; 
+            /* AJUSTE PARA O NOME DA FOTO DO IPHONE */
+            background-image: linear-gradient(rgba(253, 252, 245, 0.7), rgba(253, 252, 245, 0.7)), url('foto.jpg.heic'); 
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center; 
+            min-height: 100vh; 
+            display: none; 
+        }
+        .secao { background: rgba(253, 252, 245, 0.95); margin: 20px auto; padding: 30px; border-radius: 15px; max-width: 450px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid rgba(85, 107, 47, 0.1); }
+        
+        .grid-detalhes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .box-detalhe { border: 1px solid var(--verde); padding: 15px; border-radius: 8px; }
+        
+        .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .card-presente { background: var(--verde); color: var(--branco); padding: 15px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: 0.3s; }
+
+        .input-nome { width: 90%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
+        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 15px; border-radius: 5px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <audio id="musica" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
+    <div id="capa">
+        <div class="iniciais-capa">R & D</div>
+        <button class="btn-abrir" onclick="abrir()">Abra aqui</button>
+    </div>
+
+    <div id="player-musica">
+        <div class="tag-musica" onclick="controlar()" id="txtM">🎵 Nossa música</div>
+    </div>
+
+    <div id="conteudo" class="container">
+        <div class="secao">
+            <h2 style="font-style: italic;">Sejam bem-vindos!</h2>
+            <p>Ricardo & Daniela</p>
+            <p><strong>12 de Dezembro de 2026</strong></p>
+        </div>
+
+        <div class="secao">
+            <div class="grid-detalhes">
+                <div class="box-detalhe">
+                    <h3>Cerimônia</h3>
+                    <p>17:00h<br>Capela N. Sra. Aparecida</p>
+                </div>
+                <div class="box-detalhe">
+                    <h3>Recepção</h3>
+                    <p>19:00h<br>Salão Magique</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="secao">
+            <h3>Confirme sua Presença</h3>
+            <input type="text" id="nome" class="input-nome" placeholder="Seu nome completo">
+            <button class="btn-acao" onclick="confirmar()">Confirmar Presença</button>
+        </div>
+
+        <div class="secao">
+            <h3>Lista de Presentes</h3>
+            <div class="grid-presentes">
+                <div class="card-presente" onclick="copiarPix()">Cota 01<br>R$ 100,00</div>
+                <div class="card-presente" onclick="copiarPix()">Cota 02<br>R$ 200,00</div>
+                <div class="card-presente" onclick="copiarPix()">Cota 03<br>R$ 500,00</div>
+                <div class="card-presente" onclick="copiarPix()">Cota Livre</div>
+            </div>
+            <p id="msgPix" style="font-size: 13px; margin-top: 15px; color: #556B2F; font-weight: bold;"></p>
+        </div>
+    </div>
+
+    <script>
+        const m = document.getElementById('musica');
+        function abrir() {
+            document.getElementById('capa').style.transform = 'translateY(-100%)';
+            document.getElementById('conteudo').style.display = 'block';
+            document.getElementById('player-musica').style.display = 'block';
+            m.play().catch(() => console.log("Play manual necessário"));
+        }
+        function controlar() {
+            if (m.paused) { m.play(); document.getElementById('txtM').innerText = "⏸ Pausar música"; }
+            else { m.pause(); document.getElementById('txtM').innerText = "🎵 Nossa música"; }
+        }
+        function copiarPix() {
+            const chave = "21981906377";
+            navigator.clipboard.writeText(chave);
+            document.getElementById('msgPix').innerText = "Chave Pix (Celular) copiada!";
+            alert("Chave Pix copiada: 21 98190-6377");
+        }
+        function confirmar() {
+            const n = document.getElementById('nome').value;
+            if(n) alert("Obrigado, " + n + "! Presença confirmada.");
+        }
+    </script>
+</body>
+</html>
