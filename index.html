@@ -20,9 +20,9 @@
 
         /* PLAYER DE MÚSICA */
         #player-musica { position: fixed; top: 20px; right: 20px; z-index: 150; display: none; }
-        .tag-musica { background: var(--verde); color: var(--branco); padding: 10px 20px; border-radius: 30px; font-size: 12px; cursor: pointer; border: 1px solid var(--branco); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .tag-musica { background: var(--verde); color: var(--branco); padding: 10px 20px; border-radius: 30px; font-size: 12px; cursor: pointer; border: 1px solid var(--branco); }
 
-        /* CONTEÚDO DO CONVITE */
+        /* CONTEÚDO */
         .container { 
             padding: 40px 20px; text-align: center; 
             background-image: linear-gradient(rgba(253, 252, 245, 0.85), rgba(253, 252, 245, 0.85)), url('foto.jpg.heic'); 
@@ -30,24 +30,20 @@
         }
         .secao { background: rgba(255, 255, 255, 0.95); margin: 30px auto; padding: 35px 25px; border-radius: 20px; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(85, 107, 47, 0.1); }
         .nomes { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--verde); margin-bottom: 10px; font-style: italic; }
-        
         .box-detalhe { border-bottom: 1px solid rgba(85, 107, 47, 0.2); padding: 25px 0; }
-        .box-detalhe:last-child { border: none; }
-        .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; line-height: 1.5; font-style: italic; }
+        .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
 
-        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 10px; transition: 0.3s; }
+        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 10px; }
         
-        /* GRID DE PRESENTES */
+        /* PRESENTES */
         .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-        .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; }
-        .item-presente:hover { background: var(--verde); color: var(--branco); }
-        .item-presente b { display: block; font-size: 14px; margin-bottom: 4px; }
-        .item-presente span { font-size: 13px; font-weight: bold; }
+        .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; }
+        .item-presente b { display: block; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <audio id="musica" src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptoken=42QG9tIHRsQ" loop></audio>
+    <audio id="musica" src="https://www.mboxdrive.com/Ed%20Sheeran%20-%20Photograph.mp3" preload="auto" loop></audio>
 
     <div id="capa">
         <div class="iniciais-capa">R & D</div>
@@ -61,18 +57,18 @@
     <div id="conteudo" class="container">
         <div class="secao">
             <h1 class="nomes">Ricardo & Daniela</h1>
-            <p style="letter-spacing: 4px; font-weight: bold; text-transform: uppercase;">12 de Dezembro de 2026</p>
+            <p style="letter-spacing: 4px; font-weight: bold;">12 DE DEZEMBRO DE 2026</p>
         </div>
 
         <div class="secao">
             <div class="box-detalhe">
-                <h3 style="font-family: 'Playfair Display'; font-size: 24px; margin: 0;">Cerimônia</h3>
+                <h3>Cerimônia</h3>
                 <p><strong>17:00 horas</strong></p>
                 <p>Capela Nossa Senhora Aparecida</p>
                 <span class="endereco">Rua José Moreira Pequeno, nº 3<br>Conjunto Esperança</span>
             </div>
             <div class="box-detalhe">
-                <h3 style="font-family: 'Playfair Display'; font-size: 24px; margin: 0;">Recepção</h3>
+                <h3>Recepção</h3>
                 <p><strong>19:00 horas</strong></p>
                 <p>Salão de Festas</p>
                 <span class="endereco">Via A1 principal do Pinheiro<br>Maré</span>
@@ -80,23 +76,22 @@
         </div>
 
         <div class="secao">
-            <h3 style="font-family: 'Playfair Display'; font-size: 22px;">Confirmação de Presença</h3>
-            <p style="font-size: 14px; margin-bottom: 15px;">Sua presença é o nosso maior presente!</p>
-            <input type="text" id="nome" style="width: 88%; padding: 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd;" placeholder="Digite seu nome completo">
+            <h3>Confirmação de Presença</h3>
+            <input type="text" id="nome" style="width: 85%; padding: 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd;" placeholder="Digite seu nome completo">
             <button class="btn-acao" onclick="confirmarWhatsApp()">CONFIRMAR NO WHATSAPP</button>
         </div>
 
         <div class="secao">
-            <h3 style="font-family: 'Playfair Display'; font-size: 22px;">Lua de Mel</h3>
-            <p style="font-size: 14px;">Se desejar nos presentear, escolha uma contribuição simbólica:</p>
+            <h3>Lua de Mel</h3>
+            <p style="font-size: 14px;">Contribua para nossa felicidade clicando abaixo:</p>
             <div class="grid-presentes">
-                <div class="item-presente" onclick="copiar()"><b>Drinks na Praia</b><span>R$ 50,00</span></div>
-                <div class="item-presente" onclick="copiar()"><b>Jantar Romântico</b><span>R$ 200,00</span></div>
-                <div class="item-presente" onclick="copiar()"><b>Passeio de Barco</b><span>R$ 500,00</span></div>
-                <div class="item-presente" onclick="copiar()"><b>Contribuição Livre</b><span>Qualquer valor</span></div>
+                <div class="item-presente" onclick="copiar()"><b>Drinks na Praia</b><span>R$ 50</span></div>
+                <div class="item-presente" onclick="copiar()"><b>Jantar Romântico</b><span>R$ 200</span></div>
+                <div class="item-presente" onclick="copiar()"><b>Passeio de Barco</b><span>R$ 500</span></div>
+                <div class="item-presente" onclick="copiar()"><b>Cota Livre</b><span>Qualquer Valor</span></div>
             </div>
             <button class="btn-acao" style="margin-top: 20px; background-color: #fff; color: var(--verde); border: 2px solid var(--verde);" onclick="copiar()">COPIAR PIX: 21981906377</button>
-            <p id="pixMsg" style="margin-top:10px; font-weight:bold; color: var(--verde); font-size: 14px;"></p>
+            <p id="pixMsg" style="margin-top:10px; font-weight:bold; color: var(--verde);"></p>
         </div>
     </div>
 
@@ -106,8 +101,7 @@
             document.getElementById('capa').style.transform = 'translateY(-100%)';
             document.getElementById('conteudo').style.display = 'block';
             document.getElementById('player-musica').style.display = 'block';
-            // Inicia a música
-            audio.play().catch(e => console.log("Aguardando interação"));
+            audio.play().catch(e => console.log("Música aguardando clique"));
         }
         function controlar() {
             if (audio.paused) { audio.play(); document.getElementById('txtM').innerText = "⏸ Pausar Música"; }
@@ -116,7 +110,7 @@
         function copiar() {
             navigator.clipboard.writeText("21981906377");
             document.getElementById('pixMsg').innerText = "Chave Pix Copiada!";
-            alert("Chave Pix copiada: 21 98190-6377");
+            alert("Chave Pix (21981906377) copiada com sucesso!");
         }
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
