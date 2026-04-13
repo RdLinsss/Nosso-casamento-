@@ -8,31 +8,18 @@
     <style>
         :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; }
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; }
-        
-        #capa { 
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 1s ease-in-out;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto.jpg.heic');
-            background-size: cover; background-position: center;
-        }
+        #capa { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 1s ease-in-out; background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto.jpg.heic'); background-size: cover; background-position: center; }
         .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .btn-abrir { background: rgba(255,255,255,0.2); border: 2px solid var(--branco); color: var(--branco); padding: 15px 45px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; backdrop-filter: blur(5px); transition: 0.3s; }
-
         #player-musica { position: fixed; top: 20px; right: 20px; z-index: 150; display: none; }
         .tag-musica { background: var(--verde); color: var(--branco); padding: 10px 20px; border-radius: 30px; font-size: 12px; cursor: pointer; border: 1px solid var(--branco); box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-weight: bold; }
-
-        .container { 
-            padding: 40px 20px; text-align: center; 
-            background-image: linear-gradient(rgba(253, 252, 245, 0.85), rgba(253, 252, 245, 0.85)), url('foto.jpg.heic'); 
-            background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; display: none; 
-        }
+        .container { padding: 40px 20px; text-align: center; background-image: linear-gradient(rgba(253, 252, 245, 0.85), rgba(253, 252, 245, 0.85)), url('foto.jpg.heic'); background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; display: none; }
         .secao { background: rgba(255, 255, 255, 0.95); margin: 30px auto; padding: 35px 25px; border-radius: 20px; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(85, 107, 47, 0.1); }
         .nomes { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--verde); margin-bottom: 5px; font-style: italic; }
-        
         .frase-convite { font-family: 'Great Vibes', cursive; font-size: 32px; color: #6b7a50; margin: 25px 0; line-height: 1.3; }
-        
+        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 10px; }
         .box-detalhe { border-bottom: 1px solid rgba(85, 107, 47, 0.2); padding: 25px 0; }
         .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
-        .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 10px; }
         .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
         .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; }
         .item-presente b { display: block; font-size: 14px; }
@@ -54,12 +41,10 @@
     <div id="conteudo" class="container">
         <div class="secao">
             <h1 class="nomes">Ricardo & Daniela</h1>
-            
             <p class="frase-convite">
                 É com imenso prazer que convidamos você para o nosso casamento. <br>
                 Venha comemorar conosco e fazer parte desta história inesquecível!
             </p>
-
             <p style="letter-spacing: 5px; font-weight: bold; font-size: 14px; color: var(--verde); text-transform: uppercase; border-top: 1px solid rgba(85,107,47,0.1); padding-top: 15px;">
                 12 de Dezembro de 2026
             </p>
@@ -130,9 +115,11 @@
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
             if(nome) {
-                const link = "https://wa.me/5521981906377?text=" + encodeURIComponent("Confirmado: " + nome);
+                // MENSAGEM CORRIGIDA AQUI ABAIXO:
+                const texto = "Olá Ricardo e Daniela! Confirmo minha presença no casamento. Nome: " + nome;
+                const link = "https://wa.me/5521981906377?text=" + encodeURIComponent(texto);
                 window.open(link);
-            } else { alert("Digite seu nome"); }
+            } else { alert("Por favor, digite seu nome."); }
         }
     </script>
 </body>
