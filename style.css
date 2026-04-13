@@ -1,9 +1,0 @@
-<audio id="musica" src="https://www.mboxdrive.com/Ed%20Sheeran%20-%20Photograph.mp3" preload="auto" loop></audio>
-
-<script>
-    // Esse código garante que a música toque quando o site abrir
-    window.addEventListener('click', function() {
-        const audio = document.getElementById('musica');
-        audio.play();
-    }, { once: true }); // Toca no primeiro clique que a pessoa der na tela
-</script>
