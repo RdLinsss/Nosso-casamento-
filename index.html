@@ -3,24 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ricardo & Daniela | 12.12.2026</title> 
-    <div class="secao">
-    <h1 class="nomes">Ricardo & Daniela</h1>
-    
-    <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; line-height: 1.8; color: #6b7a50; margin: 20px 10px; border-top: 1px solid rgba(85,107,47,0.1); border-bottom: 1px solid rgba(85,107,47,0.1); padding: 15px 0;">
-        É com imenso prazer que convidamos você para o nosso casamento. <br>
-        Junte-se a nós para celebrar o amor e o início desta nova jornada. <br>
-        Sua presença tornará este dia inesquecível!
-    </p>
-
-    <p style="letter-spacing: 5px; font-weight: bold; font-size: 0.9rem; color: var(--verde); text-transform: uppercase;">
-        12 DE DEZEMBRO DE 2026
-    </p>
-</div>
-
-</div>
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <title>Ricardo & Daniela | 12.12.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; }
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; }
@@ -42,12 +26,14 @@
             background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; display: none; 
         }
         .secao { background: rgba(255, 255, 255, 0.95); margin: 30px auto; padding: 35px 25px; border-radius: 20px; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(85, 107, 47, 0.1); }
-        .nomes { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--verde); margin-bottom: 10px; font-style: italic; }
+        .nomes { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--verde); margin-bottom: 5px; font-style: italic; }
+        
+        /* Estilo da Frase Sofisticada que você pediu */
+        .frase-convite { font-family: 'Great Vibes', cursive; font-size: 32px; color: #6b7a50; margin: 25px 0; line-height: 1.3; }
+        
         .box-detalhe { border-bottom: 1px solid rgba(85, 107, 47, 0.2); padding: 25px 0; }
         .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
-
         .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 10px; }
-        
         .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
         .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; }
         .item-presente b { display: block; font-size: 14px; }
@@ -69,7 +55,15 @@
     <div id="conteudo" class="container">
         <div class="secao">
             <h1 class="nomes">Ricardo & Daniela</h1>
-            <p style="letter-spacing: 4px; font-weight: bold;">12 DE DEZEMBRO DE 2026</p>
+            
+            <p class="frase-convite">
+                É com imenso prazer que convidamos você para o nosso casamento. <br>
+                Venha comemorar conosco e fazer parte desta história inesquecível!
+            </p>
+
+            <p style="letter-spacing: 5px; font-weight: bold; font-size: 14px; color: var(--verde); text-transform: uppercase; border-top: 1px solid rgba(85,107,47,0.1); padding-top: 15px;">
+                12 de Dezembro de 2026
+            </p>
         </div>
 
         <div class="secao">
@@ -109,47 +103,31 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         var player;
-
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
-                height: '1',
-                width: '1',
-                videoId: 'Ov1RwM5fbII', // NOVO ID: Ed Sheeran - Photograph
-                playerVars: {
-                    'autoplay': 0,
-                    'loop': 1,
-                    'playlist': 'Ov1RwM5fbII'
-                }
+                height: '1', width: '1', videoId: 'Ov1RwM5fbII', 
+                playerVars: { 'autoplay': 0, 'loop': 1, 'playlist': 'Ov1RwM5fbII' }
             });
         }
-
         function abrir() {
             document.getElementById('capa').style.transform = 'translateY(-100%)';
             document.getElementById('conteudo').style.display = 'block';
             document.getElementById('player-musica').style.display = 'block';
-            
-            if (player && player.playVideo) {
-                player.playVideo();
-            }
+            if (player && player.playVideo) { player.playVideo(); }
         }
-
         function controlar() {
             const estado = player.getPlayerState();
             if (estado == 1) { 
-                player.pauseVideo();
-                document.getElementById('txtM').innerText = "🎵 Tocar Música";
+                player.pauseVideo(); document.getElementById('txtM').innerText = "🎵 Tocar Música";
             } else {
-                player.playVideo();
-                document.getElementById('txtM').innerText = "⏸ Pausar Música";
+                player.playVideo(); document.getElementById('txtM').innerText = "⏸ Pausar Música";
             }
         }
-
         function copiar() {
             navigator.clipboard.writeText("21981906377");
             document.getElementById('pixMsg').innerText = "Chave Pix Copiada!";
             alert("Chave Pix (21981906377) copiada!");
         }
-
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
             if(nome) {
@@ -160,3 +138,4 @@
     </script>
 </body>
 </html>
+k
