@@ -9,7 +9,6 @@
         :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; }
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; }
         
-        /* CAPA COM FOTO */
         #capa { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 1s ease-in-out;
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto.jpg.heic');
@@ -18,11 +17,9 @@
         .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .btn-abrir { background: rgba(255,255,255,0.2); border: 2px solid var(--branco); color: var(--branco); padding: 15px 45px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; backdrop-filter: blur(5px); transition: 0.3s; }
 
-        /* PLAYER DE MÚSICA (FICA NO TOPO APÓS ABRIR) */
         #player-musica { position: fixed; top: 20px; right: 20px; z-index: 150; display: none; }
         .tag-musica { background: var(--verde); color: var(--branco); padding: 10px 20px; border-radius: 30px; font-size: 12px; cursor: pointer; border: 1px solid var(--branco); box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-weight: bold; }
 
-        /* CONTEÚDO */
         .container { 
             padding: 40px 20px; text-align: center; 
             background-image: linear-gradient(rgba(253, 252, 245, 0.85), rgba(253, 252, 245, 0.85)), url('foto.jpg.heic'); 
@@ -97,27 +94,24 @@
     <script>
         var player;
 
-        // Inicializa o player com o ID do seu print anterior
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
                 height: '1',
                 width: '1',
-                videoId: 'aiS8pCL0pTY', 
+                videoId: 'Ov1RwM5fbII', // NOVO ID: Ed Sheeran - Photograph
                 playerVars: {
                     'autoplay': 0,
                     'loop': 1,
-                    'playlist': 'aiS8pCL0pTY'
+                    'playlist': 'Ov1RwM5fbII'
                 }
             });
         }
 
         function abrir() {
-            // Esconde a capa e mostra o site
             document.getElementById('capa').style.transform = 'translateY(-100%)';
             document.getElementById('conteudo').style.display = 'block';
             document.getElementById('player-musica').style.display = 'block';
             
-            // Dá o play na música
             if (player && player.playVideo) {
                 player.playVideo();
             }
@@ -125,7 +119,7 @@
 
         function controlar() {
             const estado = player.getPlayerState();
-            if (estado == 1) { // Se estiver tocando
+            if (estado == 1) { 
                 player.pauseVideo();
                 document.getElementById('txtM').innerText = "🎵 Tocar Música";
             } else {
@@ -137,15 +131,15 @@
         function copiar() {
             navigator.clipboard.writeText("21981906377");
             document.getElementById('pixMsg').innerText = "Chave Pix Copiada!";
-            alert("Chave Pix (21981906377) copiada com sucesso!");
+            alert("Chave Pix (21981906377) copiada!");
         }
 
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
             if(nome) {
-                const link = "https://wa.me/5521981906377?text=" + encodeURIComponent("Olá Ricardo! Confirmo minha presença no casamento. Nome: " + nome);
+                const link = "https://wa.me/5521981906377?text=" + encodeURIComponent("Confirmado: " + nome);
                 window.open(link);
-            } else { alert("Por favor, digite seu nome."); }
+            } else { alert("Digite seu nome"); }
         }
     </script>
 </body>
