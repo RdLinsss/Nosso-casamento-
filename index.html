@@ -12,52 +12,45 @@
         
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* --- CAPA DE ENTRADA (FOTO RESTAURADA) --- */
-        #capa { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-            /* AQUI ESTÁ A CORREÇÃO: Usando o nome exato do seu arquivo */
+        /* --- CAPA (FOTO DE FUNDO FORÇADA) --- */
+        #capa { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto.jpg.heic'); 
-            background-size: cover; background-position: center; }
+            background-size: cover; background-position: center; background-repeat: no-repeat;
+        }
         
-        .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; text-shadow: 2px 2px 15px rgba(0,0,0,0.6); }
         .btn-abrir { background: rgba(255,255,255,0.2); border: 2px solid var(--branco); color: var(--branco); padding: 15px 45px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; backdrop-filter: blur(5px); transition: 0.3s; }
-        .btn-abrir:hover { background: var(--branco); color: var(--verde); }
 
-        /* Player de Música Flutuante */
         #player-musica { position: fixed; bottom: 20px; right: 20px; z-index: 900; display: none; }
         .tag-musica { background: rgba(85, 107, 47, 0.8); color: var(--branco); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); }
 
-        /* --- CONTAINER PRINCIPAL (FOTO DE FUNDO RESTAURADA) --- */
-        .container { display: none; padding: 40px 20px 80px 20px; text-align: center; opacity: 0; transition: opacity 1s ease;
-            /* AQUI ESTÁ A SEGUNDA CORREÇÃO: Mantendo sua foto como fundo sutil */
-            background-image: linear-gradient(rgba(253, 252, 245, 0.9), rgba(253, 252, 245, 0.9)), url('foto.jpg.heic'); 
-            background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; }
+        /* --- CONTEÚDO (FOTO DE FUNDO COM MENOS OPACIDADE PARA APARECER) --- */
+        .container { 
+            display: none; padding: 40px 20px 80px 20px; text-align: center; opacity: 0; transition: opacity 1s ease;
+            background-image: linear-gradient(rgba(253, 252, 245, 0.7), rgba(253, 252, 245, 0.7)), url('foto.jpg.heic'); 
+            background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; 
+        }
         
-        /* Seções de Texto */
         .content-box { max-width: 500px; margin: 0 auto; position: relative; z-index: 10; }
         .nomes { font-family: 'Playfair Display', serif; font-size: 42px; margin: 10px 0; font-style: italic; }
-        .data { letter-spacing: 5px; font-weight: bold; font-size: 14px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid rgba(85,107,47,0.1); padding-bottom: 15px; }
-        .frase { font-family: 'Great Vibes', cursive; font-size: 32px; line-height: 1.3; margin: 25px 0; color: #6b7a50; }
+        .data { letter-spacing: 5px; font-weight: bold; font-size: 14px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid rgba(85,107,47,0.2); padding-bottom: 15px; }
+        .frase { font-family: 'Great Vibes', cursive; font-size: 32px; line-height: 1.3; margin: 25px 0; color: #4b5d29; }
 
-        /* --- MENU INTERATIVO (Upgrade Minimalista Mantido) --- */
+        /* MENU DE ÍCONES (IGUAL AO VÍDEO) */
         .menu-interativo { display: flex; justify-content: space-around; padding: 20px 0; margin: 10px 0 30px 0; }
         .menu-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--verde); cursor: pointer; flex: 1; }
-        .icon-box { width: 65px; height: 65px; border-radius: 50%; border: 1px solid rgba(85, 107, 47, 0.3); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 8px; transition: 0.3s; background: rgba(255,255,255,0.6); backdrop-filter: blur(2px); }
+        .icon-box { width: 65px; height: 65px; border-radius: 50%; border: 1px solid var(--verde); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 8px; transition: 0.3s; background: rgba(255,255,255,0.8); }
         .menu-item span { font-size: 10px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
-        .menu-item:hover .icon-box { background: var(--verde); color: white; border-color: var(--verde); }
+        .menu-item:hover .icon-box { background: var(--verde); color: white; }
 
-        /* Detalhes de Endereço e Presentes */
-        .secao-info { background: rgba(255, 255, 255, 0.95); margin: 20px auto; padding: 30px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(85, 107, 47, 0.05); max-width: 480px; }
-        h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-top: 0; margin-bottom: 15px; }
-        .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
-        
-        .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-        .gift-card { background: white; border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.2s; }
-        .gift-card:active { background: #f0f2eb; transform: scale(0.98); }
-        .gift-card b { display: block; font-size: 14px; }
-        .gift-card span { font-size: 16px; font-weight: bold; color: var(--verde); }
-
-        .btn-confirmar { background: var(--verde); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
-        input { width: 90%; padding: 15px; margin-top: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
+        /* SEÇÕES */
+        .secao-info { background: rgba(255, 255, 255, 0.9); margin: 20px auto; padding: 30px 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); max-width: 480px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 15px; }
+        .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .gift-card { background: white; border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; }
+        .btn-confirmar { background: var(--verde); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        input { width: 90%; padding: 15px; margin-top: 10px; border-radius: 8px; border: 1px solid #ddd; }
     </style>
 </head>
 <body>
@@ -76,11 +69,9 @@
     <div id="conteudo" class="container">
         <div class="content-box">
             
-            <div class="secao-info" style="background: none; box-shadow: none; border: none; padding-bottom: 0;">
-                <h1 class="nomes">Ricardo & Daniela</h1>
-                <p class="data">12 • DEZEMBRO • 2026</p>
-                <p class="frase">"Para que todos vejam e saibam que a mão do Senhor fez isso."</p>
-            </div>
+            <h1 class="nomes">Ricardo & Daniela</h1>
+            <p class="data">12 • DEZEMBRO • 2026</p>
+            <p class="frase">"Para que todos vejam e saibam que a mão do Senhor fez isso."</p>
 
             <div class="menu-interativo">
                 <a href="#local" class="menu-item">
@@ -98,38 +89,30 @@
             </div>
 
             <div id="local" class="secao-info">
-                <div style="margin-bottom: 25px;">
-                    <h3>Cerimônia</h3>
-                    <p><strong>17:00 horas</strong></p>
-                    <p>Capela Nossa Senhora Aparecida</p>
-                    <span class="endereco">Rua José Moreira Pequeno, nº 3<br>Conjunto Esperança</span>
-                </div>
-                <hr style="opacity: 0.1; margin: 25px 0;">
-                <div>
-                    <h3>Recepção</h3>
-                    <p><strong>19:00 horas</strong></p>
-                    <p>Salão de Festas</p>
-                    <span class="endereco">Via A1 principal do Pinheiro<br>Maré</span>
-                </div>
+                <h3>Cerimônia - 17:00h</h3>
+                <p>Capela Nossa Senhora Aparecida</p>
+                <p style="font-size: 13px; font-style: italic;">Rua José Moreira Pequeno, nº 3</p>
+                <hr style="opacity: 0.1; margin: 20px 0;">
+                <h3>Recepção - 19:00h</h3>
+                <p>Salão de Festas</p>
+                <p style="font-size: 13px; font-style: italic;">Via A1 principal do Pinheiro, Maré</p>
             </div>
 
             <div id="presentes" class="secao-info">
-                <h3>Lua de Mel</h3>
+                <h3>Mimos para os Noivos</h3>
                 <div class="grid-presentes">
-                    <div class="gift-card" onclick="copiar()"><b>Drinks na Praia</b><span>R$ 50</span></div>
-                    <div class="gift-card" onclick="copiar()"><b>Jantar Romântico</b><span>R$ 200</span></div>
-                    <div class="gift-card" onclick="copiar()"><b>Passeio de Barco</b><span>R$ 500</span></div>
-                    <div class="gift-card" onclick="copiar()"><b>Cota Livre</b><span>Qualquer Valor</span></div>
+                    <div class="gift-card" onclick="copiar()"><b>Drinks</b><br>R$ 50</div>
+                    <div class="gift-card" onclick="copiar()"><b>Jantar</b><br>R$ 200</div>
+                    <div class="gift-card" onclick="copiar()"><b>Barco</b><br>R$ 500</div>
+                    <div class="gift-card" onclick="copiar()"><b>Cota Livre</b><br>...</div>
                 </div>
-                <button onclick="copiar()" class="btn-confirmar" style="background: white; color: var(--verde); border: 2px solid var(--verde); margin-top: 25px;">
-                    COPIAR PIX: 21981906377
-                </button>
+                <button onclick="copiar()" class="btn-confirmar" style="background: white; color: var(--verde); border: 1px solid var(--verde);">COPIAR PIX: 21981906377</button>
             </div>
 
             <div id="confirmar" class="secao-info">
                 <h3>Confirmar Presença</h3>
-                <input type="text" id="nome" placeholder="Digite seu nome completo">
-                <button class="btn-confirmar" onclick="confirmarWhatsApp()">CONFIRMAR NO WHATSAPP</button>
+                <input type="text" id="nome" placeholder="Digite seu nome">
+                <button class="btn-confirmar" onclick="confirmarWhatsApp()">ENVIAR NO WHATSAPP</button>
             </div>
 
         </div>
@@ -137,7 +120,6 @@
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // Lógica da Música (Mantida original)
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
@@ -145,8 +127,6 @@
                 playerVars: { 'autoplay': 0, 'loop': 1, 'playlist': 'Ov1RwM5fbII' }
             });
         }
-
-        // Função Abrir Convite (Mantida original com fade-in)
         function abrir() {
             document.getElementById('capa').style.transform = 'translateY(-100%)';
             const conteudo = document.getElementById('conteudo');
@@ -155,31 +135,21 @@
             document.getElementById('player-musica').style.display = 'block';
             if (player && player.playVideo) { player.playVideo(); }
         }
-
-        // Controle de Som (Mantida original, apenas mudando ícone)
         function controlar() {
             const estado = player.getPlayerState();
             const icon = document.getElementById('icon-som');
-            if (estado == 1) { 
-                player.pauseVideo(); icon.className = "fas fa-play";
-            } else {
-                player.playVideo(); icon.className = "fas fa-pause";
-            }
+            if (estado == 1) { player.pauseVideo(); icon.className = "fas fa-play"; } 
+            else { player.playVideo(); icon.className = "fas fa-pause"; }
         }
-
-        // Copiar PIX (Mantida original)
         function copiar() {
             navigator.clipboard.writeText("21981906377");
-            alert("Chave Pix (21981906377) copiada! Obrigado.");
+            alert("Chave Pix copiada!");
         }
-
-        // Confirmar WhatsApp (Mantida original)
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
             if(nome) {
-                const texto = "Olá Ricardo e Daniela! Confirmo minha presença no casamento. Nome: " + nome;
-                window.open("https://wa.me/5521981906377?text=" + encodeURIComponent(texto));
-            } else { alert("Por favor, digite seu nome."); }
+                window.open("https://wa.me/5521981906377?text=" + encodeURIComponent("Confirmo minha presença: " + nome));
+            } else { alert("Digite seu nome!"); }
         }
     </script>
 </body>
