@@ -8,51 +8,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; --dourado: #B8860B; }
+        :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; }
         
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Capa de Entrada */
-        #capa { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1); background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('foto1.jpg'); background-size: cover; background-position: center; }
-        .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 60px; color: var(--branco); margin-bottom: 20px; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
-        .btn-abrir { background: rgba(255,255,255,0.15); border: 1px solid var(--branco); color: var(--branco); padding: 12px 35px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; backdrop-filter: blur(8px); transition: 0.4s; letter-spacing: 2px; }
+        /* --- CAPA DE ENTRADA (FOTO RESTAURADA) --- */
+        #capa { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            /* AQUI ESTÁ A CORREÇÃO: Usando o nome exato do seu arquivo */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto.jpg.heic'); 
+            background-size: cover; background-position: center; }
+        
+        .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .btn-abrir { background: rgba(255,255,255,0.2); border: 2px solid var(--branco); color: var(--branco); padding: 15px 45px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; backdrop-filter: blur(5px); transition: 0.3s; }
         .btn-abrir:hover { background: var(--branco); color: var(--verde); }
 
         /* Player de Música Flutuante */
         #player-musica { position: fixed; bottom: 20px; right: 20px; z-index: 900; display: none; }
         .tag-musica { background: rgba(85, 107, 47, 0.8); color: var(--branco); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); }
 
-        /* Container Principal */
-        .container { display: none; padding-bottom: 50px; opacity: 0; transition: opacity 1s ease; }
+        /* --- CONTAINER PRINCIPAL (FOTO DE FUNDO RESTAURADA) --- */
+        .container { display: none; padding: 40px 20px 80px 20px; text-align: center; opacity: 0; transition: opacity 1s ease;
+            /* AQUI ESTÁ A SEGUNDA CORREÇÃO: Mantendo sua foto como fundo sutil */
+            background-image: linear-gradient(rgba(253, 252, 245, 0.9), rgba(253, 252, 245, 0.9)), url('foto.jpg.heic'); 
+            background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; }
         
-        /* Carrossel de Fotos Estilo Vídeo */
-        .slideshow { width: 100%; height: 60vh; position: relative; overflow: hidden; margin-bottom: -30px; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
-        .slide.active { opacity: 1; }
-        .overlay-slide { position: absolute; bottom: 0; width: 100%; height: 40%; background: linear-gradient(transparent, var(--creme)); }
+        /* Seções de Texto */
+        .content-box { max-width: 500px; margin: 0 auto; position: relative; z-index: 10; }
+        .nomes { font-family: 'Playfair Display', serif; font-size: 42px; margin: 10px 0; font-style: italic; }
+        .data { letter-spacing: 5px; font-weight: bold; font-size: 14px; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid rgba(85,107,47,0.1); padding-bottom: 15px; }
+        .frase { font-family: 'Great Vibes', cursive; font-size: 32px; line-height: 1.3; margin: 25px 0; color: #6b7a50; }
 
-        /* Seções e Conteúdo */
-        .content-box { padding: 0 25px; text-align: center; position: relative; z-index: 10; }
-        .nomes { font-family: 'Playfair Display', serif; font-size: 38px; margin: 10px 0; font-style: italic; }
-        .data { letter-spacing: 4px; font-size: 14px; margin-bottom: 30px; opacity: 0.8; }
-        .frase { font-family: 'Great Vibes', cursive; font-size: 28px; line-height: 1.4; margin: 20px auto; max-width: 320px; }
-
-        /* MENU INTERATIVO (O Upgrade Minimalista) */
-        .menu-interativo { display: flex; justify-content: space-around; padding: 30px 10px; margin: 20px 0; }
+        /* --- MENU INTERATIVO (Upgrade Minimalista Mantido) --- */
+        .menu-interativo { display: flex; justify-content: space-around; padding: 20px 0; margin: 10px 0 30px 0; }
         .menu-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--verde); cursor: pointer; flex: 1; }
-        .icon-box { width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--verde); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 8px; transition: 0.3s; background: white; }
+        .icon-box { width: 65px; height: 65px; border-radius: 50%; border: 1px solid rgba(85, 107, 47, 0.3); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 8px; transition: 0.3s; background: rgba(255,255,255,0.6); backdrop-filter: blur(2px); }
         .menu-item span { font-size: 10px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
-        .menu-item:hover .icon-box { background: var(--verde); color: white; }
+        .menu-item:hover .icon-box { background: var(--verde); color: white; border-color: var(--verde); }
 
         /* Detalhes de Endereço e Presentes */
-        .secao-info { background: white; margin: 20px; padding: 30px 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .gift-card { border: 1px solid #eee; padding: 15px; border-radius: 10px; font-size: 13px; transition: 0.3s; }
-        .gift-card:active { background: #f0f2eb; }
+        .secao-info { background: rgba(255, 255, 255, 0.95); margin: 20px auto; padding: 30px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(85, 107, 47, 0.05); max-width: 480px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 24px; margin-top: 0; margin-bottom: 15px; }
+        .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
+        
+        .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        .gift-card { background: white; border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.2s; }
+        .gift-card:active { background: #f0f2eb; transform: scale(0.98); }
+        .gift-card b { display: block; font-size: 14px; }
+        .gift-card span { font-size: 16px; font-weight: bold; color: var(--verde); }
 
-        .btn-confirmar { background: var(--verde); color: white; border: none; padding: 15px; width: 100%; border-radius: 50px; font-weight: bold; margin-top: 15px; cursor: pointer; }
-        input { width: 100%; padding: 12px; margin-top: 10px; border-radius: 10px; border: 1px solid #ddd; box-sizing: border-box; }
+        .btn-confirmar { background: var(--verde); color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        input { width: 90%; padding: 15px; margin-top: 10px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -69,17 +74,13 @@
     </div>
 
     <div id="conteudo" class="container">
-        
-        <div class="slideshow">
-            <div class="slide active" style="background-image: url('foto1.jpg');"></div>
-            <div class="slide" style="background-image: url('foto2.jpg');"></div>
-            <div class="slide" style="background-image: url('foto3.jpg');"></div> <div class="overlay-slide"></div>
-        </div>
-
         <div class="content-box">
-            <h1 class="nomes">Ricardo & Daniela</h1>
-            <p class="data">12 • DEZEMBRO • 2026</p>
-            <p class="frase">"Para que todos vejam e saibam que a mão do Senhor fez isso."</p>
+            
+            <div class="secao-info" style="background: none; box-shadow: none; border: none; padding-bottom: 0;">
+                <h1 class="nomes">Ricardo & Daniela</h1>
+                <p class="data">12 • DEZEMBRO • 2026</p>
+                <p class="frase">"Para que todos vejam e saibam que a mão do Senhor fez isso."</p>
+            </div>
 
             <div class="menu-interativo">
                 <a href="#local" class="menu-item">
@@ -97,38 +98,46 @@
             </div>
 
             <div id="local" class="secao-info">
-                <h3>Onde e Quando</h3>
-                <p><strong>Cerimônia: 17:00h</strong><br>Capela Nossa Senhora Aparecida</p>
-                <p style="font-size: 13px; color: #666; font-style: italic;">Rua José Moreira Pequeno, nº 3</p>
-                <hr style="opacity: 0.1; margin: 20px 0;">
-                <p><strong>Recepção: 19:00h</strong><br>Salão de Festas</p>
-                <p style="font-size: 13px; color: #666; font-style: italic;">Via A1 principal do Pinheiro, Maré</p>
+                <div style="margin-bottom: 25px;">
+                    <h3>Cerimônia</h3>
+                    <p><strong>17:00 horas</strong></p>
+                    <p>Capela Nossa Senhora Aparecida</p>
+                    <span class="endereco">Rua José Moreira Pequeno, nº 3<br>Conjunto Esperança</span>
+                </div>
+                <hr style="opacity: 0.1; margin: 25px 0;">
+                <div>
+                    <h3>Recepção</h3>
+                    <p><strong>19:00 horas</strong></p>
+                    <p>Salão de Festas</p>
+                    <span class="endereco">Via A1 principal do Pinheiro<br>Maré</span>
+                </div>
             </div>
 
             <div id="presentes" class="secao-info">
-                <h3>Mimos para os Noivos</h3>
+                <h3>Lua de Mel</h3>
                 <div class="grid-presentes">
-                    <div class="gift-card" onclick="copiar()"><b>Drinks na Praia</b><br>R$ 50</div>
-                    <div class="gift-card" onclick="copiar()"><b>Jantar Romântico</b><br>R$ 200</div>
-                    <div class="gift-card" onclick="copiar()"><b>Passeio de Barco</b><br>R$ 500</div>
-                    <div class="gift-card" onclick="copiar()"><b>Cota Livre</b><br>Qualquer Valor</div>
+                    <div class="gift-card" onclick="copiar()"><b>Drinks na Praia</b><span>R$ 50</span></div>
+                    <div class="gift-card" onclick="copiar()"><b>Jantar Romântico</b><span>R$ 200</span></div>
+                    <div class="gift-card" onclick="copiar()"><b>Passeio de Barco</b><span>R$ 500</span></div>
+                    <div class="gift-card" onclick="copiar()"><b>Cota Livre</b><span>Qualquer Valor</span></div>
                 </div>
-                <button onclick="copiar()" class="btn-confirmar" style="background: white; color: var(--verde); border: 1px solid var(--verde); margin-top: 15px;">
+                <button onclick="copiar()" class="btn-confirmar" style="background: white; color: var(--verde); border: 2px solid var(--verde); margin-top: 25px;">
                     COPIAR PIX: 21981906377
                 </button>
             </div>
 
             <div id="confirmar" class="secao-info">
                 <h3>Confirmar Presença</h3>
-                <input type="text" id="nome" placeholder="Seu nome completo">
-                <button class="btn-confirmar" onclick="confirmarWhatsApp()">ENVIAR CONFIRMAÇÃO</button>
+                <input type="text" id="nome" placeholder="Digite seu nome completo">
+                <button class="btn-confirmar" onclick="confirmarWhatsApp()">CONFIRMAR NO WHATSAPP</button>
             </div>
+
         </div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // Lógica da Música
+        // Lógica da Música (Mantida original)
         var player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
@@ -137,7 +146,7 @@
             });
         }
 
-        // Função Abrir Convite
+        // Função Abrir Convite (Mantida original com fade-in)
         function abrir() {
             document.getElementById('capa').style.transform = 'translateY(-100%)';
             const conteudo = document.getElementById('conteudo');
@@ -145,9 +154,9 @@
             setTimeout(() => { conteudo.style.opacity = '1'; }, 100);
             document.getElementById('player-musica').style.display = 'block';
             if (player && player.playVideo) { player.playVideo(); }
-            iniciarCarrossel();
         }
 
+        // Controle de Som (Mantida original, apenas mudando ícone)
         function controlar() {
             const estado = player.getPlayerState();
             const icon = document.getElementById('icon-som');
@@ -158,22 +167,13 @@
             }
         }
 
-        // Lógica do Carrossel (Upgrade)
-        function iniciarCarrossel() {
-            const slides = document.querySelectorAll('.slide');
-            let atual = 0;
-            setInterval(() => {
-                slides[atual].classList.remove('active');
-                atual = (atual + 1) % slides.length;
-                slides[atual].classList.add('active');
-            }, 4000); // Troca a cada 4 segundos
-        }
-
+        // Copiar PIX (Mantida original)
         function copiar() {
             navigator.clipboard.writeText("21981906377");
-            alert("Chave Pix copiada com sucesso! Obrigado pelo carinho.");
+            alert("Chave Pix (21981906377) copiada! Obrigado.");
         }
 
+        // Confirmar WhatsApp (Mantida original)
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
             if(nome) {
