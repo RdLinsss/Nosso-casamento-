@@ -8,25 +8,34 @@
     <style>
         :root { --verde: #556B2F; --creme: #FDFCF5; --branco: #FFFFFF; --vinho: #800020; }
         body, html { margin: 0; padding: 0; font-family: 'Lato', sans-serif; background-color: var(--creme); color: var(--verde); overflow-x: hidden; }
-        #capa { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 1s ease-in-out; background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('foto.jpg.heic'); background-size: cover; background-position: center; }
+        
+        /* Capa atualizada com a nova foto IMG_5205.jpeg */
+        #capa { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; width: 100%; top: 0; z-index: 100; transition: transform 1s ease-in-out; background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('IMG_5205.jpeg'); background-size: cover; background-position: center; }
         .iniciais-capa { font-family: 'Playfair Display', serif; font-size: 80px; color: var(--branco); margin-bottom: 30px; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .btn-abrir { background: rgba(255,255,255,0.2); border: 2px solid var(--branco); color: var(--branco); padding: 15px 45px; border-radius: 50px; font-family: 'Playfair Display', serif; cursor: pointer; font-size: 18px; backdrop-filter: blur(5px); transition: 0.3s; }
+        
         #player-musica { position: fixed; top: 20px; right: 20px; z-index: 150; display: none; }
         .tag-musica { background: var(--verde); color: var(--branco); padding: 10px 20px; border-radius: 30px; font-size: 12px; cursor: pointer; border: 1px solid var(--branco); box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-weight: bold; }
-        .container { padding: 40px 20px; text-align: center; background-image: linear-gradient(rgba(253, 252, 245, 0.45), rgba(253, 252, 245, 0.45)), url('IMG_5204.jpeg'); background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; display: none; }
-        .secao { background: rgba(255, 255, 255, 0.95); margin: 30px auto; padding: 35px 25px; border-radius: 20px; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(85, 107, 47, 0.1); }
+        
+        .container { padding: 40px 20px; text-align: center; background-image: linear-gradient(rgba(253, 252, 245, 0.25), rgba(253, 252, 245, 0.25)), url('IMG_5204.jpeg'); background-attachment: fixed; background-size: cover; background-position: center; min-height: 100vh; display: none; }
+        
+        /* Cartões com efeito de transparência (Vidro Fosco) */
+        .secao { background: rgba(255, 255, 255, 0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); margin: 30px auto; padding: 35px 25px; border-radius: 20px; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(255, 255, 255, 0.5); }
+        
         .nomes { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--verde); margin-bottom: 5px; font-style: italic; }
-        .frase-convite { font-family: 'Great Vibes', cursive; font-size: 32px; color: #6b7a50; margin: 25px 0; line-height: 1.3; }
+        .frase-convite { font-family: 'Great Vibes', cursive; font-size: 32px; color: #4a5d28; margin: 25px 0; line-height: 1.3; }
         .btn-acao { background-color: var(--verde); color: var(--branco); border: none; padding: 18px; border-radius: 10px; width: 100%; cursor: pointer; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: bold; margin-top: 10px; }
         .box-detalhe { border-bottom: 1px solid rgba(85, 107, 47, 0.2); padding: 25px 0; }
-        .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
+        .endereco { font-size: 14px; color: #444; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
+        
         .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-        .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 12px; border-radius: 12px; cursor: pointer; text-align: center; }
+        .item-presente { background: rgba(255, 255, 255, 0.85); border: 1px solid var(--verde); padding: 12px; border-radius: 12px; cursor: pointer; text-align: center; }
         .item-presente img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; display: block; }
         .item-presente b { display: block; font-size: 14px; }
+        
         .aviso-importante { font-size: 14px; color: var(--vinho); line-height: 1.6; font-weight: bold; margin: 0; }
         .hashtag-aviso { font-size: 16px; color: var(--vinho); font-weight: bold; margin-top: 15px; display: block; letter-spacing: 1px; }
-        .texto-mimos { font-size: 15px; color: #555; line-height: 1.5; margin-bottom: 15px; font-style: italic; }
+        .texto-mimos { font-size: 15px; color: #444; line-height: 1.5; margin-bottom: 15px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -49,7 +58,7 @@
                 É com imenso prazer que convidamos você para o nosso casamento. <br>
                 Venha comemorar conosco e fazer parte desta história inesquecível!
             </p>
-            <p style="letter-spacing: 5px; font-weight: bold; font-size: 14px; color: var(--verde); text-transform: uppercase; border-top: 1px solid rgba(85,107,47,0.1); padding-top: 15px;">
+            <p style="letter-spacing: 5px; font-weight: bold; font-size: 14px; color: var(--verde); text-transform: uppercase; border-top: 1px solid rgba(85,107,47,0.2); padding-top: 15px;">
                 12 de Dezembro de 2026
             </p>
         </div>
@@ -63,7 +72,7 @@
             </div>
             <div class="box-detalhe">
                 <h3>Recepção</h3>
-                <p><strong>18:30 horas</strong></p>
+                <p><strong>19:00 horas</strong></p>
                 <p>Salão Magic</p>
                 <span class="endereco">Via A1 principal do Pinheiro<br>Maré</span>
             </div>
@@ -71,7 +80,7 @@
 
         <div class="secao">
             <h3>Confirmação de Presença</h3>
-            <input type="text" id="nome" style="width: 85%; padding: 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd;" placeholder="Digite seu nome completo">
+            <input type="text" id="nome" style="width: 85%; padding: 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ccc; background: rgba(255,255,255,0.9);" placeholder="Digite seu nome completo">
             <button class="btn-acao" onclick="confirmarWhatsApp()">CONFIRMAR NO WHATSAPP</button>
         </div>
 
@@ -86,7 +95,7 @@
                 <div class="item-presente" onclick="copiar()"><img src="IMG_5225.jpeg" alt="Passeio de Barco"><b>Passeio de Barco</b></div>
                 <div class="item-presente" onclick="copiar()"><img src="IMG_5274.jpeg" alt="Cota Livre"><b>Cota Livre</b></div>
             </div>
-            <button class="btn-acao" style="margin-top: 20px; background-color: #fff; color: var(--verde); border: 2px solid var(--verde);" onclick="copiar()">COPIAR PIX: 21981906377</button>
+            <button class="btn-acao" style="margin-top: 20px; background-color: rgba(255,255,255,0.9); color: var(--verde); border: 2px solid var(--verde);" onclick="copiar()">COPIAR PIX: 21981906377</button>
             <p id="pixMsg" style="margin-top:10px; font-weight:bold; color: var(--verde);"></p>
         </div>
 
