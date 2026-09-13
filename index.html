@@ -21,7 +21,7 @@
         .box-detalhe { border-bottom: 1px solid rgba(85, 107, 47, 0.2); padding: 25px 0; }
         .endereco { font-size: 14px; color: #555; display: block; margin-top: 8px; font-style: italic; line-height: 1.5; }
         .grid-presentes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-        .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 15px; border-radius: 12px; cursor: pointer; text-align: center; }
+        .item-presente { background: var(--branco); border: 1px solid var(--verde); padding: 12px; border-radius: 12px; cursor: pointer; text-align: center; }
         .item-presente img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; display: block; }
         .item-presente b { display: block; font-size: 14px; }
     </style>
@@ -75,10 +75,10 @@
         <div class="secao">
             <h3>Mimos para os Noivos</h3>
             <div class="grid-presentes">
-                <div class="item-presente" onclick="copiar()"><img src="drink.png" alt="Drinks na Praia"><b>Drinks na Praia</b></div>
-                <div class="item-presente" onclick="copiar()"><img src="jantar.png" alt="Jantar Romântico"><b>Jantar Romântico</b></div>
-                <div class="item-presente" onclick="copiar()"><img src="barco.png" alt="Passeio de Barco"><b>Passeio de Barco</b></div>
-                <div class="item-presente" onclick="copiar()"><img src="cotalivre.png" alt="Cota Livre"><b>Cota Livre</b></div>
+                <div class="item-presente" onclick="copiar()"><img src="IMG_5223.jpeg" alt="Drinks na Praia"><b>Drinks na Praia</b></div>
+                <div class="item-presente" onclick="copiar()"><img src="IMG_5224.jpeg" alt="Jantar Romântico"><b>Jantar Romântico</b></div>
+                <div class="item-presente" onclick="copiar()"><img src="IMG_5225.jpeg" alt="Passeio de Barco"><b>Passeio de Barco</b></div>
+                <div class="item-presente" onclick="copiar()"><b>Cota Livre</b><span>Qualquer Valor</span></div>
             </div>
             <button class="btn-acao" style="margin-top: 20px; background-color: #fff; color: var(--verde); border: 2px solid var(--verde);" onclick="copiar()">COPIAR PIX: 21981906377</button>
             <p id="pixMsg" style="margin-top:10px; font-weight:bold; color: var(--verde);"></p>
@@ -122,7 +122,6 @@
         function confirmarWhatsApp() {
             const nome = document.getElementById('nome').value;
             if(nome) {
-                // MENSAGEM CORRIGIDA AQUI ABAIXO:
                 const texto = "Olá Ricardo e Daniela! Confirmo minha presença no casamento. Nome: " + nome;
                 const link = "https://wa.me/5521981906377?text=" + encodeURIComponent(texto);
                 window.open(link);
